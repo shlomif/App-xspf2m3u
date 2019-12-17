@@ -12,3 +12,11 @@ Installation
 ----
 cpan App::xspf2m3u
 ----
+
+USAGE
+=====
+
+[source,bash]
+----
+xspf2m3u convert -o out.m3u /path/to/input.xspf
+----
