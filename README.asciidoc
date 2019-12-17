@@ -1,0 +1,14 @@
+App-xspf2m3u
+============
+
+Convert https://en.wikipedia.org/wiki/XML_Shareable_Playlist_Format[XSPF] playlists to
+https://en.wikipedia.org/wiki/M3U[m3u] ones. For example, for use by https://mpv.io/[mpv]
+which does not support *.xspf yet.
+
+Installation
+============
+
+[source,bash]
+----
+cpan App::xspf2m3u
+----
