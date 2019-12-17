@@ -2,6 +2,10 @@ package App::xspf2m3u;
 
 use strict;
 use warnings;
+use 5.016;
+use autodie;
+
+use App::Cmd::Setup -app;
 
 1;
 
