@@ -5,9 +5,15 @@ use warnings;
 use autodie;
 use 5.016;
 
+use Path::Tiny qw/ path /;
+
 use App::xspf2m3u -command;
 use XML::XSPF ();
 
+{
+    no warnings 'redefine';
+    *XML::XSPF::_isValidURI = sub { return 1; };
+}
 sub abstract { "convert .xspf playlists to .m3u ones" }
 
 sub description { return abstract(); }

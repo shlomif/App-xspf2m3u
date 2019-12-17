@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+# PODNAME: xspf2m3u
+
+use strict;
+use warnings;
+
+use App::xspf2m3u;
+App::xspf2m3u->run;
+
+__END__
+
+=head1 NAME
+
+xspf2m3u - convert .xspf playlists to m3u ones.
+
+=cut
