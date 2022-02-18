@@ -27,26 +27,32 @@ sub validate_args
 {
     my ( $self, $opt, $args ) = @_;
 
-    $self->usage_error("args required")            if not @$args;
-    $self->usage_error("can only accept one path") if @$args != 1;
+    $self->usage_error("args required") if not @$args;
+    if (0)
+    {
+        $self->usage_error("can only accept one path") if @$args != 1;
+    }
 }
 
 sub execute
 {
     my ( $self, $opt, $args ) = @_;
 
-    my $playlist = XML::XSPF->parse( $args->[0] );
-
     my $text = '';
-    foreach my $track ( $playlist->trackList )
+    foreach my $fn (@$args)
     {
-        if ( my $loc = $track->location )
+        my $playlist = XML::XSPF->parse($fn);
+
+        foreach my $track ( $playlist->trackList )
         {
-            if ( $loc =~ /[\n\r]/ )
+            if ( my $loc = $track->location )
             {
-                die "Invalid newline in location <<$loc>>!";
+                if ( $loc =~ /[\n\r]/ )
+                {
+                    die "Invalid newline in location <<$loc>>!";
+                }
+                $text .= "$loc\n";
             }
-            $text .= "$loc\n";
         }
     }
     path( $opt->{output} )->spew_utf8($text);
